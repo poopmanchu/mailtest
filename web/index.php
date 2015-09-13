@@ -13,7 +13,7 @@ if (getenv("CLEARDB_DATABASE_URL") != "") {
 	$username = $url["user"];
 	$password = $url["pass"];
 	$dbname = substr($url["path"], 1);
-	$db = new PDO('mysql:host=' . $server . ';dbname=' . $dbname . 'charset=utf8', $username, $password);
+	$db = new PDO('mysql:host=' . $server . ';dbname=' . $dbname . ';charset=utf8', $username, $password);
 	#$db = new PDO('mysql:host=us-cdbr-iron-east-02.cleardb.net;dbname=heroku_520ba2224f276e6;charset=utf8', 'b60f97485912f4', '5fd0cb8e');
 
 } else {
@@ -26,7 +26,9 @@ if (getenv("CLEARDB_DATABASE_URL") != "") {
 	$username = $url["user"];
 	$password = $url["pass"];
 	$dbname = substr($url["path"], 1);
-	echo $server . "<br>" . $username . "<br>" . $password . "<br>" . $dbname . "<br>"; */
+	echo $server . "<br>" . $username . "<br>" . $password . "<br>" . $dbname . "<br>";
+	$db = new PDO('mysql:host=' . $server . ';dbname=' . $dbname . ';charset=utf8', $username, $password);
+	*/
 	
 }
 
