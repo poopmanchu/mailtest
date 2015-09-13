@@ -8,16 +8,26 @@ use Mailgun\Mailgun;
 if (getenv("CLEARDB_DATABASE_URL") != "") {
 	echo "heroku!<hr>";
 	$url = parse_url(getenv("CLEARDB_DATABASE_URL")); // heroku database url
+	echo getenv("CLEARDB_DATABASE_URL") . "<br>";
 	$server = $url["host"];
 	$username = $url["user"];
 	$password = $url["pass"];
 	$dbname = substr($url["path"], 1);
-	#$db = new PDO('mysql:host=' . $server . ';dbname=' . $dbname . 'charset=utf8', $username, $password);
-	$db = new PDO('mysql:host=us-cdbr-iron-east-02.cleardb.net;dbname=heroku_520ba2224f276e6;charset=utf8', 'b60f97485912f4', '5fd0cb8e');
+	$db = new PDO('mysql:host=' . $server . ';dbname=' . $dbname . 'charset=utf8', $username, $password);
+	#$db = new PDO('mysql:host=us-cdbr-iron-east-02.cleardb.net;dbname=heroku_520ba2224f276e6;charset=utf8', 'b60f97485912f4', '5fd0cb8e');
 
 } else {
 	echo "local!<hr>";
 	$db = new PDO('mysql:host=localhost;dbname=brgross;charset=utf8', 'root', 'root');
+	/*
+	$envtest = "mysql://b60f97485912f4:5fd0cb8e@us-cdbr-iron-east-02.cleardb.net/heroku_520ba2224f276e6?reconnect=true";
+	$url = parse_url($envtest); // heroku database url
+	$server = $url["host"];
+	$username = $url["user"];
+	$password = $url["pass"];
+	$dbname = substr($url["path"], 1);
+	echo $server . "<br>" . $username . "<br>" . $password . "<br>" . $dbname . "<br>"; */
+	
 }
 
 
