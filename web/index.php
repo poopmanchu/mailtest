@@ -7,6 +7,14 @@ use Mailgun\Mailgun;
 
 if (getenv("CLEARDB_DATABASE_URL") != "") {
 	echo "heroku!<hr>";
+	$url = parse_url(getenv("CLEARDB_DATABASE_URL")); // heroku database url
+	$server = $url["host"];
+	$username = $url["user"];
+	$password = $url["pass"];
+	$dbname = substr($url["path"], 1);
+	#$db = new PDO('mysql:host=' . $server . ';dbname=' . $dbname . 'charset=utf8', $username, $password);
+	$url = parse_url('mysql://b60f97485912f4:5fd0cb8e@us-cdbr-iron-east-02.cleardb.net/heroku_520ba2224f276e6?reconnect=true');
+
 } else {
 	echo "local!<hr>";
 	$db = new PDO('mysql:host=localhost;dbname=brgross;charset=utf8', 'root', 'root');
