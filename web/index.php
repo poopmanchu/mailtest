@@ -6,9 +6,8 @@ use Mailgun\Mailgun;
 # determine environment and connect to right database accordingly
 
 if (getenv("CLEARDB_DATABASE_URL") != "") {
-	echo "heroku!<hr>";
+	echo "heroku!!<hr>";
 	$url = parse_url(getenv("CLEARDB_DATABASE_URL")); // heroku database url
-	echo getenv("CLEARDB_DATABASE_URL") . "<br>";
 	$server = $url["host"];
 	$username = $url["user"];
 	$password = $url["pass"];
@@ -43,7 +42,7 @@ function send_email($name, $email)
                   array('from'    => 'Mailgun Sandbox <postmaster@sandbox12a6e644e12a43d4bd6bc11a3f899787.mailgun.org>',
                         'to'      => $name . "<" . $email . ">",
                         'subject' => 'Hello again ' . $name,
-                        'text'    => 'Congratulations ' . $name . ', You are truly awesome!'));
+                        'text'    => 'Congratulations ' . $name . ', You are great'));
     return true;
 }
 
