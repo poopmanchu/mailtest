@@ -38,7 +38,7 @@ foreach($db->query('SELECT * FROM mailtest limit 5') as $row) {
 function send_email($name, $email) 
 {
 	global $mgClient, $domain;
-	result = $mgClient->sendMessage("$domain",
+	$result = $mgClient->sendMessage("$domain",
                   array('from'    => 'Dinner Bot <db@mg.bnegross.com>',
                         'to'      => $name . "<" . $email . ">",
                         'subject' => 'Hello again ' . $name,
